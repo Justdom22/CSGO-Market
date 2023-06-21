@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"] {
+    -webkit-appearance: none;
+    margin: 0;
+    -moz-appearance: textfield !important;
+  }
+}
+
+.rc-tooltip {
+  z-index: 3 !important;
+}
+
+body {
+  background: #05052b;
+  color: #ffffff;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
