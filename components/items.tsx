@@ -151,16 +151,18 @@ const CartItemCard: React.FC<ItemProps> = ({ item }) => {
 
             <h2 className="mt-3 text-center line-clamp-2 h-12">{item.market_name}</h2>
 
-            <div className="flex justify-center items-center mt-2">
+            <div className="flex justify-center items-center my-2">
               <h3>{item.price.toFixed(2)}$</h3>
             </div>
 
             <SecondaryButton
               text="Remove from cart"
               style={{
-                width: "40px",
+                paddingLeft: "10px",
+                paddingRight: "10px",
                 height: "40px",
               }}
+              preventDefault
               onClick={() => {
                 dispatch(removeItem(item.market_hash_name));
               }}
@@ -254,7 +256,7 @@ const ItemsSearch: React.FC<SearchProps> = ({ apiFilters, itemType, itemId }) =>
   function getPagination() {
     const paginationButtons = [];
 
-    const startPage = page > 0 ? page - 1 : 0;
+    const startPage = page > 5 ? page - 5 : 0;
 
     for (let index = startPage; index < lastPage; index++) {
       paginationButtons.push(
@@ -263,13 +265,14 @@ const ItemsSearch: React.FC<SearchProps> = ({ apiFilters, itemType, itemId }) =>
           style={{
             width: "40px",
             height: "40px",
+            backgroundImage: page == index ? "linear-gradient(180deg, #2AC8EB 0%, #00A7CC 100%)" : ""
           }}
           text={`${index + 1}`}
           onClick={() => setPage(index)}
         />
       );
 
-      if (paginationButtons.length === 3) break;
+      if (paginationButtons.length === 9) break;
     }
 
     return paginationButtons;
@@ -302,7 +305,7 @@ const ItemsSearch: React.FC<SearchProps> = ({ apiFilters, itemType, itemId }) =>
             {isLoading && getBlankItems()}
           </div>
 
-          {!isLoading && lastPage > 1 && (
+          {lastPage > 1 && (
             <div className="mt-6 px-2 h-10 flex justify-between">
               <SecondaryButton
                 style={{

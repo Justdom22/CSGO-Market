@@ -1,5 +1,9 @@
+"use client"
+
 import Image from "next/image";
 import Link from "next/link";
+
+import { ShowSupport } from "./input/modal";
 
 const Footer = () => {
   return (
@@ -13,33 +17,26 @@ const Footer = () => {
               <br /> Steam skins with fast
               <br /> withdrawals
             </span>
+
+            <div className="flex items-center space-x-4 mt-8">
+              <Image src="/icons/master-card.png" alt="visa" width={65} height={39} className="h-10" />
+              <Image src="/icons/visa.png" alt="visa" width={68} height={21} className="h-5" />
+            </div>
           </div>
           <div className="flex space-x-16 ml-28">
             <div className="flex flex-col text-body-1 space-y-6">
               <Link href="/">Home</Link>
               <Link href="/faq">FAQ</Link>
-              <Link href="/">Support</Link>
+              <Link href="/" onClick={(e) => {
+                e.preventDefault();
+                ShowSupport();
+              }}>Support</Link>
             </div>
           </div>
         </div>
       </div>
       <div className="w-full bg-shade-200 h-16 px-96 flex items-center justify-between">
         <span className="text-body-1 text-shade-500">@2023 market.brmcsgo.com</span>
-
-        <div className="flex space-x-7">
-          <Link href="https://ru-ru.facebook.com/">
-            <Image src="/icons/Facebook.svg" width={18} height={18} alt={""} />
-          </Link>
-          <Link href="https://www.instagram.com/">
-            <Image src="/icons/Instagram.svg" width={18} height={18} alt={""} />
-          </Link>
-          <Link href="https://twitter.com/">
-            <Image src="/icons/Twitter.svg" width={18} height={18} alt={""} />
-          </Link>
-          <Link href="https://www.youtube.com/">
-            <Image src="/icons/YouTube.svg" width={18} height={18} alt={""} />
-          </Link>
-        </div>
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ export default async function Page() {
       <h1>FAQ</h1>
 
       <div className="flex flex-col mt-12 space-y-16 w-[900px]">
-        <div className="flex flex-col space-y-6">
+        <div className="flex flex-col space-y-4">
           <h2>I replenished the balance - the money did not come - what should I do?</h2>
 
           <span className="text-body-1 break-words">
@@ -26,7 +26,7 @@ export default async function Page() {
             end of the queue.
           </span>
         </div>
-        <div className="flex flex-col space-y-6">
+        <div className="flex flex-col space-y-4">
           <h2>I bought items - but the trade did not received - what should I do?</h2>
 
           <span className="text-body-1 break-words">

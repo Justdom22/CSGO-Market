@@ -10,13 +10,30 @@ const SupportModal = NiceModal.create(() => {
   const [text, setText] = useState("");
   const [email, setEmail] = useState("");
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    toast.success("Ticket created", {
+      autoClose: 1500,
+      className(context) {
+        return `relative flex p-3 min-h-10 rounded-md justify-between overflow-hidden cursor-pointer bg-shade-300 ${
+          context?.type === "error" ? "text-error-100" : "text-white"
+        }`;
+      },
+      progressClassName: "bg-primary-100",
+    });
+
+    modal.remove();
+  };
+
   return (
     <div
       id="backdrop"
       onClick={() => modal.remove()}
       className="bg-black bg-opacity-50 z-10 backdrop-blur-sm fixed inset-0 flex items-center justify-center"
     >
-      <div
+      <form
+        onSubmit={handleSubmit}
         className="bg-shade-200 p-5 rounded-[20px] flex flex-col items-center justify-center space-y-6"
         onClick={(e) => {
           e.stopPropagation();
@@ -26,8 +43,8 @@ const SupportModal = NiceModal.create(() => {
           <h1>New support request</h1>
 
           <h3 className="mt-2 text-center">
-            Before creating a new request, we recommend <br /> that our specialists
-            familiarize themselves with our{" "}
+            Before creating a new request, we recommend <br /> that our
+            specialists familiarize themselves with our{" "}
             <Link
               href="/faq"
               className="text-primary-200 hover:text-primary-300 active:text-primary-100"
@@ -67,25 +84,13 @@ const SupportModal = NiceModal.create(() => {
 
         <PrimaryButton
           text="Create a ticket"
-          onClick={() => {
-            toast.success("Ticket created", {
-              autoClose: 1500,
-              className(context) {
-                return `relative flex p-3 min-h-10 rounded-md justify-between overflow-hidden cursor-pointer bg-shade-300 ${
-                  context?.type === "error" ? "text-error-100" : "text-white"
-                }`;
-              },
-              progressClassName: "bg-primary-100",
-            });
-            
-            modal.remove();
-          }}
+          type="submit"
           style={{
             width: "200px",
             height: "40px",
           }}
         />
-      </div>
+      </form>
     </div>
   );
 });

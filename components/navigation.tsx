@@ -6,7 +6,7 @@ import { Dropdown } from "@/components/input/dropdown";
 
 interface NavbarEndpoint {
   title: string;
-  href: string;
+  href?: string;
 
   onClick?: () => void;
 }
