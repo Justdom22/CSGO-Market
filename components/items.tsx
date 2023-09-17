@@ -72,7 +72,7 @@ const ItemCard: React.FC<ItemProps> = ({ item }) => {
             <h2 className="mt-3 text-center line-clamp-2 h-12">{item.market_name}</h2>
 
             <div className="flex justify-center items-center mt-2">
-              <h3>{item.price.toFixed(2)}$</h3>
+            {item.price !== null ? <h3>{item.price.toFixed(2)}$</h3> : <h3>Price not available</h3>}
               {item.ctp != 0 && <h3 className="text-primary-100 ml-3">-{item.ctp}%</h3>}
             </div>
 
